@@ -9,6 +9,7 @@ const nextConfig = {
     outputFileTracingIncludes: {
       '/articles/*': ['./src/app/articles/**/*.mdx'],
     },
+    optimizePackageImports: ['@phosphor-icons/react'],
   },
 }
 

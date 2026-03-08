@@ -15,6 +15,7 @@
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^14.0.4",
+    "@phosphor-icons/react": "^2.1.10",
     "@tailwindcss/postcss": "^4.0.6",
     "@tailwindcss/typography": "^0.5.4",
     "@types/node": "^20.10.8",

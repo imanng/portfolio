@@ -1,17 +1,18 @@
-export * from './email-icon'
-export * from './github-icon'
-export * from './icon-x'
-export * from './linkedin-icon'
-
-import { GitHubIcon } from './github-icon'
-import { XIcon } from './icon-x'
-import { LinkedInIcon } from './linkedin-icon'
+import {
+  XLogoIcon,
+  GithubLogoIcon,
+  LinkedinLogoIcon,
+  GooglePlayLogoIcon,
+  AppStoreLogoIcon,
+} from '@phosphor-icons/react/ssr'
 
 export const socialIconsMap: Record<
   string,
   React.ComponentType<{ className?: string }>
 > = {
-  x: XIcon,
-  github: GitHubIcon,
-  linkedin: LinkedInIcon,
+  x: XLogoIcon,
+  github: GithubLogoIcon,
+  linkedin: LinkedinLogoIcon,
+  playStore: GooglePlayLogoIcon,
+  appStore: AppStoreLogoIcon,
 }

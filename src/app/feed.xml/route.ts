@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   }
 
   let author = {
-    name: 'Felix Nguyen',
+    name: 'Niko Nguyen',
     email: 'contact@felixng.one',
   }
 

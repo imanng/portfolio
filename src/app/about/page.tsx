@@ -16,7 +16,7 @@ function SocialLink({
 }: {
   className?: string
   href: string
-  icon: React.ComponentType<{ className?: string }>
+  icon: React.ComponentType<{ className?: string; weight?: string }>
   children: React.ReactNode
 }) {
   return (
@@ -25,7 +25,7 @@ function SocialLink({
         href={href}
         className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
       >
-        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" weight="duotone" />
         <span className="ml-4">{children}</span>
       </Link>
     </li>
@@ -35,7 +35,7 @@ function SocialLink({
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'I’m Spencer Sharp. I live in New York City, where I design the future.',
+    'I’m An (also call me Niko), a senior software developer based in Danang, Vietnam. 5+ years building products with React, Next.js, and Flutter.',
 }
 
 export default function About() {
@@ -54,46 +54,36 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I’m Spencer Sharp. I live in New York City, where I design the
-            future.
+            I’m An (also call me Niko)
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              I’ve loved making things for as long as I can remember, and wrote
-              my first program when I was 6 years old, just two weeks after my
-              mom brought home the brand new Macintosh LC 550 that I taught
-              myself to type on.
+              I'm a software engineer with 5+ years of experience designing and
+              developing products in technology companies. I love programming,
+              from designing system architecture to diving deep into frameworks
+              and problem-solving.
             </p>
             <p>
-              The only thing I loved more than computers as a kid was space.
-              When I was 8, I climbed the 40-foot oak tree at the back of our
-              yard while wearing my older sister’s motorcycle helmet, counted
-              down from three, and jumped — hoping the tree was tall enough that
-              with just a bit of momentum I’d be able to get to orbit.
+              I work across the stack: front-end with React and Next.js, mobile
+              with Flutter, and back-end with Node.js and NestJS. I've shipped
+              products for startups and teams — license management systems,
+              AI-powered automation platforms, healthcare apps, and B2B SaaS —
+              and I care about scalable architecture, clean code, and good DX.
             </p>
             <p>
-              I spent the next few summers indoors working on a rocket design,
-              while I recovered from the multiple surgeries it took to fix my
-              badly broken legs. It took nine iterations, but when I was 15 I
-              sent my dad’s Blackberry into orbit and was able to transmit a
-              photo back down to our family computer from space.
-            </p>
-            <p>
-              Today, I’m the founder of Planetaria, where we’re working on
-              civilian space suits and manned shuttle kits you can assemble at
-              home so that the next generation of kids really <em>can</em> make
-              it to orbit — from the comfort of their own backyards.
+              I also want to be an indie developer, so I keep learning and
+              building more projects, exploring new tools, and sharing what I
+              learn along the way.
             </p>
           </div>
         </div>
         <div className="lg:pl-20">
-          <ul role="list">
+          <ul role="list" className="grid grid-cols-2 gap-x-6 gap-y-2">
             {socialData.map((e) => (
               <SocialLink
                 key={e.key}
                 href={e.link}
                 icon={socialIconsMap[e.key]}
-                className="mt-4"
               >
                 {e.value}
               </SocialLink>
