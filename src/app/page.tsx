@@ -6,15 +6,21 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { BriefcaseIcon, BuildingOfficeIcon, CloudArrowDownIcon } from '@phosphor-icons/react/ssr'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
 import { type ArticleWithSlug } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import { resumeUrl, socialData, workData, type WorkRole } from '@/data'
 import { socialIconsMap } from '@/components/icons'
+
+const PHOTO_SIZE = { width: 576, height: 640 }
+
+async function getPhotoUrls(count: number): Promise<string[]> {
+  const now = new Date()
+  const seed = `${String(now.getDate()).padStart(2, '0')}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getFullYear()).slice(-2)}`
+  return Array.from(
+    { length: count },
+    (_, i) => `https://picsum.photos/seed/${seed}-${i}/${PHOTO_SIZE.width}/${PHOTO_SIZE.height}`,
+  )
+}
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
@@ -101,23 +107,25 @@ function Resume() {
   )
 }
 
-function Photos() {
+function Photos({ urls }: { urls: string[] }) {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
+        {urls.map((src, imageIndex) => (
           <div
-            key={image.src}
+            key={src}
             className={clsx(
               'relative aspect-9/10 w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
               rotations[imageIndex % rotations.length],
             )}
           >
             <Image
-              src={image}
+              src={src}
               alt=""
+              width={PHOTO_SIZE.width}
+              height={PHOTO_SIZE.height}
               sizes="(min-width: 640px) 18rem, 11rem"
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -130,6 +138,7 @@ function Photos() {
 
 export default async function Home() {
   let articles: ArticleWithSlug[] = []
+  let photoUrls = await getPhotoUrls(5)
 
   return (
     <>
@@ -157,7 +166,7 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Photos />
+      <Photos urls={photoUrls} />
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
