@@ -116,12 +116,12 @@ function Photos({ urls }: { urls: string[] }) {
 
   return (
     <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+      <div className="-my-4 flex gap-5 overflow-x-auto overflow-y-hidden py-4 sm:gap-8 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pl-[max(0px,50%-11rem)] pr-[max(0px,50%-11rem)] sm:pl-[max(0px,50%-18rem)] sm:pr-[max(0px,50%-18rem)]">
         {urls.map((src, imageIndex) => (
           <div
             key={src}
             className={clsx(
-              'relative aspect-9/10 w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
+              'relative aspect-9/10 w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800 snap-center',
               rotations[imageIndex % rotations.length],
             )}
           >
