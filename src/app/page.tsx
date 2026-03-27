@@ -6,7 +6,7 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { BriefcaseIcon, BuildingOfficeIcon, CloudArrowDownIcon } from '@phosphor-icons/react/ssr'
-import { type ArticleWithSlug } from '@/lib/articles'
+import { getAllArticles, type ArticleWithSlug } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import { resumeUrl, socialData, workData, type WorkRole } from '@/data'
 import { socialIconsMap } from '@/components/icons'
@@ -141,7 +141,7 @@ function Photos({ urls }: { urls: string[] }) {
 }
 
 export default async function Home() {
-  let articles: ArticleWithSlug[] = []
+  let articles = (await getAllArticles()).slice(0, 4)
   let photoUrls = await getPhotoUrls(5)
 
   return (
